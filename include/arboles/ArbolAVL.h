@@ -11,10 +11,8 @@ private:
     NodoArbol<T>* raiz;
     int tamano;
 
-   
     int obtenerAltura(NodoArbol<T>* nodo) const;
 
-    
     int obtenerBalance(NodoArbol<T>* nodo) const;
 
     void actualizarAltura(NodoArbol<T>* nodo);
@@ -25,7 +23,6 @@ private:
     
     NodoArbol<T>* rotarIzquierda(NodoArbol<T>* x);
 
-   
     NodoArbol<T>* rotarIzquierdaDerecha(NodoArbol<T>* nodo);
 
     
@@ -51,10 +48,10 @@ private:
     void imprimirEstructuraRecursivo(NodoArbol<T>* nodo, int espacio) const;
 
 public:
-   
+
     ArbolAVL();
 
-   
+
     ~ArbolAVL();
 
     
@@ -66,13 +63,10 @@ public:
     
     bool eliminar(const T& dato);
 
-   
     void inorden() const;
 
-   
     void preorden() const;
 
-    
     void postorden() const;
 
     
@@ -90,22 +84,18 @@ public:
     
     int obtenerTamano() const;
 
-   
     int contarHojas() const;
 
-   
     bool estaVacio() const;
 
-   
     bool estaBalanceado() const;
 
     
     void limpiar();
 
-  
     void imprimir() const;
 
-   
+
     void imprimirEstructura() const;
 };
 
@@ -217,7 +207,7 @@ NodoArbol<T>* ArbolAVL<T>::insertarRecursivo(NodoArbol<T>* nodo, const T& dato) 
     
     actualizarAltura(nodo);
 
-   
+
     int balance = obtenerBalance(nodo);
 
     //casos de desbalance (4 casos)
@@ -283,13 +273,11 @@ NodoArbol<T>* ArbolAVL<T>::eliminarRecursivo(NodoArbol<T>* nodo, const T& dato) 
         return NULL;
     }
 
-   
+
     actualizarAltura(nodo);
 
-   
     int balance = obtenerBalance(nodo);
 
-   
     if (balance > 1 && obtenerBalance(nodo->getIzquierdo()) >= 0) {
         return rotarDerecha(nodo);
     }
@@ -302,7 +290,6 @@ NodoArbol<T>* ArbolAVL<T>::eliminarRecursivo(NodoArbol<T>* nodo, const T& dato) 
         return rotarIzquierda(nodo);
     }
 
-   
     if (balance < -1 && obtenerBalance(nodo->getDerecho()) > 0) {
         return rotarDerechaIzquierda(nodo);
     }

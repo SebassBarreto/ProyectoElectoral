@@ -39,8 +39,16 @@ public:
     void setDescripcion(const string& d){
         descripcion = d;
     }
+
+    string toSting() const{
+        return to_string(id) +"|"+nombre+"|"+descripcion;
+    }
+
+    void mostrar() const{
+        cout << "Region { id=" << id
+        << ", nombre=\"" << nombre
+        << "\", descripcion=\"" << descripcion
+        << "\" }" << endl;
+    }
 };
-
-
-
 #endif //REGION_H

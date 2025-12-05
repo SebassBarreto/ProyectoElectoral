@@ -9,11 +9,11 @@
 using namespace std;
 
 /**
- * Tipos de voto según el enunciado:
+ * Tipos de voto segun el enunciado:
  * - Valido: voto para un candidato
- * - Blanco: opción 0 en tarjetón
- * - Nulo: voto inválido por marcaciones incorrectas
- * - Abstencion: no emitió voto (se contabiliza para simulación, no es un voto sobre tarjetón)
+ * - Blanco: opcion 0 en tarjeton
+ * - Nulo: voto invalido por marcaciones incorrectas
+ * - Abstencion: no emitio voto (se contabiliza para simulacion, no es un voto sobre tarjeton)
  */
 
 enum class TipoVoto : uint8_t {
@@ -127,7 +127,7 @@ public:
         return ss.str();
     }
 
-    //serialización a archivo plano
+    //serializacion a archivo plano
     std::string toFileFormat() const {
         std::stringstream ss;
         ss << idCiudad << "|"
@@ -192,7 +192,7 @@ public:
         return true;
     }
 
-    //comparadores para estructuras genéricas y algoritmos
+    //comparadores para estructuras genericas y algoritmos
     bool operator==(const Voto& other) const {
         return idCiudad == other.idCiudad &&
                 idPartido == other.idPartido &&
@@ -208,7 +208,7 @@ public:
         return idCandidato < other.idCandidato;
     }
 
-    //impresion compatible con nodos genéricos
+    //impresion compatible con nodos genericos
     friend ostream& operator<<(ostream& os, const Voto& v) {
         os << v.toString();
         return os;

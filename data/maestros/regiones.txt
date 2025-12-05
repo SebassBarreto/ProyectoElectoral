@@ -1,1 +1,7 @@
+1|Andina|Region Andina
+2|Caribe|Region Caribe
+3|Pacifico|Region Pacifico
+4|Orinoquia|Region Orinoquia
+5|Amazonia|Region Amazonia
+6|Centro|Region Centro
 7|Unidistrital|Region de prueba para Cicomland

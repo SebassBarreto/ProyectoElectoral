@@ -1,1 +1,20 @@
+1|Bogota|6|800000|1
+2|Medellin|1|250000|1
+3|Cali|3|240000|1
+4|Barranquilla|2|120000|1
+5|Cartagena|2|110000|1
+6|Bucaramanga|1|600000|1
 7|Unidistrital|Region de prueba para Cicomland
+8|Pereira|1|500000|1
+9|Manizales|1|430000|1
+10|Santa Marta|2|520000|1
+11|Villavicencio|4|550000|1
+12|Pasto|3|520000|1
+13|Ibague|1|500000|1
+14|Armenia|1|300000|1
+15|Neiva|1|350000|1
+16|Tunja|1|200000|1
+17|Popayan|3|320000|1
+18|Monteria|2|500000|1
+19|Sincelejo|2|300000|1
+20|Yopal|4|180000|1

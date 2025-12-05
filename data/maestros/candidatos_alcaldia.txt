@@ -1,0 +1,99 @@
+Carlos|Lopez|100101|M|Soltero|10|05|1980|Bogota|Bogota|Partido A|A|
+Diana|Rios|100102|F|Casado|22|09|1985|Bogota|Bogota|Partido B|A|
+Jorge|Mendez|100103|M|UnionLibre|03|02|1979|Bogota|Bogota|Partido C|A|
+Luisa|Beltran|100104|F|Divorciado|28|11|1982|Bogota|Bogota|Partido D|A|
+
+Andres|Gomez|100201|M|Casado|14|07|1978|Medellin|Medellin|Partido A|A|
+Paola|Velez|100202|F|Soltero|19|08|1986|Medellin|Medellin|Partido B|A|
+Santiago|Arango|100203|M|UnionLibre|05|04|1981|Medellin|Medellin|Partido C|A|
+Valeria|Ospina|100204|F|Divorciado|12|10|1983|Medellin|Medellin|Partido D|A|
+
+Mario|Paredes|100301|M|Soltero|11|01|1977|Cali|Cali|Partido A|A|
+Tatiana|Reyes|100302|F|UnionLibre|09|03|1984|Cali|Cali|Partido B|A|
+Felipe|Quintero|100303|M|Casado|21|06|1979|Cali|Cali|Partido C|A|
+Natalia|Ramon|100304|F|Divorciado|02|12|1987|Cali|Cali|Partido D|A|
+
+Ricardo|Acosta|100401|M|Soltero|25|05|1982|Barranquilla|Barranquilla|Partido A|A|
+Sara|Delgado|100402|F|Casado|17|07|1985|Barranquilla|Barranquilla|Partido B|A|
+Hector|Fuentes|100403|M|UnionLibre|29|09|1981|Barranquilla|Barranquilla|Partido C|A|
+Camila|Lara|100404|F|Divorciado|08|02|1984|Barranquilla|Barranquilla|Partido D|A|
+
+Juan|Martinez|100501|M|Soltero|04|04|1978|Cartagena|Cartagena|Partido A|A|
+Adriana|Soto|100502|F|Casado|13|08|1983|Cartagena|Cartagena|Partido B|A|
+Nicolas|Barros|100503|M|UnionLibre|07|11|1980|Cartagena|Cartagena|Partido C|A|
+Daniela|Arrieta|100504|F|Divorciado|16|03|1986|Cartagena|Cartagena|Partido D|A|
+
+Oscar|Camacho|100601|M|Casado|20|06|1979|Bucaramanga|Bucaramanga|Partido A|A|
+Melisa|Prada|100602|F|Soltero|31|01|1988|Bucaramanga|Bucaramanga|Partido B|A|
+Jhon|Chaparro|100603|M|UnionLibre|26|10|1981|Bucaramanga|Bucaramanga|Partido C|A|
+Laura|Mora|100604|F|Divorciado|12|12|1984|Bucaramanga|Bucaramanga|Partido D|A|
+
+Pedro|Rojas|100701|M|Casado|06|02|1977|Cucuta|Cucuta|Partido A|A|
+Angela|Useche|100702|F|Soltero|18|05|1990|Cucuta|Cucuta|Partido B|A|
+Camilo|Peña|100703|M|UnionLibre|23|09|1982|Cucuta|Cucuta|Partido C|A|
+Daniela|Sarmiento|100704|F|Divorciado|15|12|1986|Cucuta|Cucuta|Partido D|A|
+
+Mauricio|Hoyos|100801|M|Soltero|27|07|1980|Pereira|Pereira|Partido A|A|
+Andrea|Londono|100802|F|Casado|05|11|1985|Pereira|Pereira|Partido B|A|
+Sergio|Duque|100803|M|UnionLibre|09|01|1979|Pereira|Pereira|Partido C|A|
+Carolina|Botero|100804|F|Divorciado|22|04|1987|Pereira|Pereira|Partido D|A|
+
+Julian|Mejia|100901|M|Soltero|14|02|1981|Manizales|Manizales|Partido A|A|
+Diana|Aristizabal|100902|F|Casado|30|08|1984|Manizales|Manizales|Partido B|A|
+Federico|Zapata|100903|M|UnionLibre|19|10|1978|Manizales|Manizales|Partido C|A|
+Valentina|Giron|100904|F|Divorciado|03|03|1986|Manizales|Manizales|Partido D|A|
+
+Luis|Bermeo|101001|M|Casado|08|06|1980|Armenia|Armenia|Partido A|A|
+Martha|Henao|101002|F|Soltero|12|09|1987|Armenia|Armenia|Partido B|A|
+Santiago|Murillo|101003|M|UnionLibre|01|12|1979|Armenia|Armenia|Partido C|A|
+Tatiana|Quiceno|101004|F|Divorciado|25|01|1985|Armenia|Armenia|Partido D|A|
+
+Ivan|Paez|101101|M|Soltero|11|03|1977|Ibague|Ibague|Partido A|A|
+Carolina|Salinas|101102|F|Casado|07|07|1986|Ibague|Ibague|Partido B|A|
+Jair|Trujillo|101103|M|UnionLibre|29|09|1979|Ibague|Ibague|Partido C|A|
+Nathalia|Parra|101104|F|Divorciado|10|10|1984|Ibague|Ibague|Partido D|A|
+
+Camilo|Vargas|101201|M|Casado|19|05|1981|Neiva|Neiva|Partido A|A|
+Luisa|Cortes|101202|F|Soltero|21|11|1987|Neiva|Neiva|Partido B|A|
+Samuel|Obando|101203|M|UnionLibre|02|02|1978|Neiva|Neiva|Partido C|A|
+Paula|Giraldo|101204|F|Divorciado|17|08|1985|Neiva|Neiva|Partido D|A|
+
+Hernan|Roa|101301|M|Soltero|06|04|1979|Tunja|Tunja|Partido A|A|
+Maria|Beltran|101302|F|Casado|28|06|1986|Tunja|Tunja|Partido B|A|
+Oscar|Moreno|101303|M|UnionLibre|15|10|1980|Tunja|Tunja|Partido C|A|
+Daniela|Sanchez|101304|F|Divorciado|09|12|1984|Tunja|Tunja|Partido D|A|
+
+Wilson|Torres|101401|M|Casado|03|03|1978|Villavicencio|Villavicencio|Partido A|A|
+Tatiana|Lozano|101402|F|Soltero|25|07|1987|Villavicencio|Villavicencio|Partido B|A|
+Fernando|Garzon|101403|M|UnionLibre|11|11|1980|Villavicencio|Villavicencio|Partido C|A|
+Lina|Avila|101404|F|Divorciado|14|01|1986|Villavicencio|Villavicencio|Partido D|A|
+
+Jairo|Montoya|101501|M|Soltero|22|02|1981|Yopal|Yopal|Partido A|A|
+Karen|Perez|101502|F|Casado|18|08|1988|Yopal|Yopal|Partido B|A|
+Rodrigo|Sierra|101503|M|UnionLibre|07|10|1979|Yopal|Yopal|Partido C|A|
+Marcela|Nova|101504|F|Divorciado|01|12|1985|Yopal|Yopal|Partido D|A|
+
+Edwin|Rojas|101601|M|Casado|12|05|1978|Florencia|Florencia|Partido A|A|
+Silvia|Marin|101602|F|Soltero|20|09|1987|Florencia|Florencia|Partido B|A|
+Alvaro|Castiblanco|101603|M|UnionLibre|04|11|1980|Florencia|Florencia|Partido C|A|
+Lorena|Diaz|101604|F|Divorciado|16|01|1985|Florencia|Florencia|Partido D|A|
+
+Carlos|Velasquez|101701|M|Soltero|10|02|1981|Leticia|Leticia|Partido A|A|
+Marta|Lopez|101702|F|Casado|27|06|1987|Leticia|Leticia|Partido B|A|
+German|Navas|101703|M|UnionLibre|08|08|1979|Leticia|Leticia|Partido C|A|
+Paola|Sarmiento|101704|F|Divorciado|19|12|1985|Leticia|Leticia|Partido D|A|
+
+Diego|Palacios|101801|M|Casado|14|03|1978|San Andres|San Andres|Partido A|A|
+Eliana|Vargas|101802|F|Soltero|23|07|1986|San Andres|San Andres|Partido B|A|
+Hugo|Meza|101803|M|UnionLibre|05|09|1979|San Andres|San Andres|Partido C|A|
+Nataly|Amaya|101804|F|Divorciado|31|12|1984|San Andres|San Andres|Partido D|A|
+
+Manuel|Serrano|101901|M|Soltero|02|02|1979|Santa Marta|Santa Marta|Partido A|A|
+Diana|Perez|101902|F|Casado|09|06|1986|Santa Marta|Santa Marta|Partido B|A|
+Jose|Franco|101903|M|UnionLibre|13|10|1980|Santa Marta|Santa Marta|Partido C|A|
+Valeria|Bello|101904|F|Divorciado|27|11|1985|Santa Marta|Santa Marta|Partido D|A|
+
+Sergio|Arrieta|102001|M|Casado|06|01|1978|Riohacha|Riohacha|Partido A|A|
+Mariana|Torres|102002|F|Soltero|15|05|1987|Riohacha|Riohacha|Partido B|A|
+Edgar|Padilla|102003|M|UnionLibre|24|09|1979|Riohacha|Riohacha|Partido C|A|
+Catalina|Paz|102004|F|Divorciado|07|12|1984|Riohacha|Riohacha|Partido D|A|

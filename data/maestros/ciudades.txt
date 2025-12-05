@@ -1,0 +1,20 @@
+1|Bogota|1|7800000
+2|Medellin|1|2500000
+3|Cali|3|2200000
+4|Barranquilla|2|1300000
+5|Cartagena|2|1000000
+6|Bucaramanga|1|600000
+7|Cucuta|1|750000
+8|Pereira|1|500000
+9|Manizales|1|430000
+10|Armenia|1|320000
+11|Ibague|1|540000
+12|Neiva|1|380000
+13|Tunja|1|190000
+14|Villavicencio|4|550000
+15|Yopal|4|180000
+16|Florencia|5|170000
+17|Leticia|5|50000
+18|San Andres|6|70000
+19|Santa Marta|2|520000
+20|Riohacha|2|250000

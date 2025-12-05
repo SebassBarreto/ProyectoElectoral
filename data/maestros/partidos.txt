@@ -1,0 +1,5 @@
+Partido A|Ana Perez|101
+Partido B|Bruno Diaz|102
+Partido C|Camila Torres|103
+Partido D|Diego Ramirez|104
+Partido E|Elena Silva|105

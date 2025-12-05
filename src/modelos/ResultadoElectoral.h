@@ -11,12 +11,12 @@ using namespace std;
 
 class ResultadoElectoral {
 private:
-    std::map<std::string, int> votosPorCandidato; // candidato -> votos
+    map<string, int> votosPorCandidato; // candidato -> votos
     int votosEnBlanco;
     int votosNulos;
     int abstencion;
     int censoElectoral;
-    std::string ganador;
+    string ganador;
     bool requiereSegundaVuelta;
 
     // Validar que no haya sobrepaso del censo
@@ -35,7 +35,7 @@ public:
     }
 
     // Setters
-    bool agregarVoto(const std::string& candidato) {
+    bool agregarVoto(const string& candidato) {
         if (!validarVoto()) return false;
         votosPorCandidato[candidato]++;
         return true;
@@ -68,10 +68,10 @@ public:
             return;
         }
 
-        auto maxCandidato = std::max_element(
+        auto maxCandidato = max_element(
             votosPorCandidato.begin(),
             votosPorCandidato.end(),
-            [](const std::pair<const std::string, int>& a, const std::pair<const std::string, int>& b) {
+            [](const pair<const string, int>& a, const pair<const string, int>& b) {
                 return a.second < b.second;
             });
 
@@ -88,7 +88,7 @@ public:
         }
     }
 
-    void setGanador(const std::string& g) {
+    void setGanador(const string& g) {
         ganador = g;
     }
 
@@ -97,7 +97,7 @@ public:
     }
 
     // Getters
-    int getVotos(const std::string& candidato) const {
+    int getVotos(const string& candidato) const {
         auto it = votosPorCandidato.find(candidato);
         if (it != votosPorCandidato.end()) {
             return it->second;
@@ -108,18 +108,18 @@ public:
     int getVotosEnBlanco() const { return votosEnBlanco; }
     int getVotosNulos() const { return votosNulos; }
     int getAbstencion() const { return abstencion; }
-    std::string getGanador() const { return ganador; }
+    string getGanador() const { return ganador; }
     bool getRequiereSegundaVuelta() const { return requiereSegundaVuelta; }
     int getCensoElectoral() const { return censoElectoral; }
 
     // Obtener copia del mapa
-    const std::map<std::string, int>& getVotosPorCandidato() const {
+    const map<string, int>& getVotosPorCandidato() const {
         return votosPorCandidato;
     }
 
-    // Cálculos CORREGIDOS
+    // Calculos CORREGIDOS
     int getTotalVotosValidos() const {
-        int total = votosEnBlanco; // Votos en blanco son válidos
+        int total = votosEnBlanco; // Votos en blanco son validos
         for (const auto& par : votosPorCandidato) {
             total += par.second;
         }
@@ -140,7 +140,7 @@ public:
         return (static_cast<float>(votos) / censoElectoral) * 100.0f;
     }
 
-    // Porcentajes sobre votos válidos
+    // Porcentajes sobre votos validos
     float getPorcentajeSobreValidos(int votos) const {
         int totalValidos = getTotalVotosValidos();
         if (totalValidos == 0) return 0.0f;
@@ -148,27 +148,27 @@ public:
     }
 
     // toString mejorado
-    std::string toString() const {
-        std::stringstream ss;
+    string toString() const {
+        stringstream ss;
         ss << "RESULTADOS ELECTORALES"<<endl;
 
         ss << "Censo electoral: " << censoElectoral <<endl;
         ss << "Votos emitidos: " << getTotalVotosEmitidos()
-            << " (" << std::fixed << std::setprecision(2)
+            << " (" << fixed << setprecision(2)
             << getPorcentajeSobreCenso(getTotalVotosEmitidos()) << "%)" << endl;
-        ss << "Abstención: " << abstencion
+        ss << "Abstencion: " << abstencion
             << " (" << getPorcentajeSobreCenso(abstencion) << "%)" << endl;
 
-        ss << "VOTOS VÁLIDOS: " << endl;
+        ss << "VOTOS VaLIDOS: " << endl;
         for (const auto& par : votosPorCandidato) {
-            ss << "  " << std::left << std::setw(20) << par.first
-                << ": " << std::right << std::setw(6) << par.second << " votos"
-                << " (" << getPorcentajeSobreValidos(par.second) << "% válidos)"
+            ss << "  " << left << setw(20) << par.first
+                << ": " << right << setw(6) << par.second << " votos"
+                << " (" << getPorcentajeSobreValidos(par.second) << "% validos)"
                 << " (" << getPorcentajeSobreCenso(par.second) << "% censo)" << endl;
         }
 
         ss << "Votos en blanco: " << votosEnBlanco
-            << " (" << getPorcentajeSobreValidos(votosEnBlanco) << "% válidos)" << endl;
+            << " (" << getPorcentajeSobreValidos(votosEnBlanco) << "% validos)" << endl;
         ss << "Votos nulos: " << votosNulos << endl;
         ss << "Total validos: " << getTotalVotosValidos() << endl;
 

@@ -1,266 +1,53 @@
-# Manual de Usuario  
-## Sistema Electoral – Proyecto Final 2025-3  
-
----
-
-## 1. Introducción  
-
-El Sistema Electoral es una aplicación de consola diseñada para simular y gestionar el proceso electoral de las alcaldías de las capitales del país y las elecciones presidenciales. Permite realizar consultas, modificar datos, generar tarjetones, simular votaciones, obtener escrutinios y generar estadísticas nacionales y regionales.  
-
-Este manual explica cómo usar el programa paso a paso.
-
----
-
-## 2. Requerimientos  
-
-- **Sistema operativo:** Windows, Linux o macOS.  
-- **Compilador C++:** Compatible con C++17 (Dev-C++ o MinGW).  
-- **Archivos de datos** dentro de la carpeta `data/`:
-  - `regiones.txt`
-  - `ciudades.txt`
-  - `partidos.txt`
-  - `candidatos.txt`
-  - `resultados.txt`
-
-**Importante:** No mover ni renombrar estos archivos.
-
----
-
-## 3. Ejecución Inicial  
-
-Para iniciar el sistema:  
-
-1. Abra la carpeta del proyecto.  
-2. Ejecute el archivo `ProyectoElectoral.exe` (si está compilado) o compile `main.cpp` en Dev-C++.  
-3. Al iniciar, el sistema cargará automáticamente:
-   - Ciudades
-   - Regiones
-   - Partidos
-   - Candidatos
-   - Censo electoral generado aleatoriamente
-   - Datos previos de simulaciones anteriores
-
-Una vez cargado, aparecerá el **Menú Principal**.
-
----
-
-## 4. Menú Principal  
-SISTEMA ELECTORAL
-=================
-
-Consultas
-
-Modificación de datos
-
-Simulación electoral
-
-Escrutinio
-
-Estadísticas
-
-Salir
-
-Seleccione una opción:
-
-text
-
----
-
-## 5. Consultas  
-
-Este módulo permite consultar información sin modificar los datos.
-
-**Opciones típicas:**  
-
-1. Consultar regiones  
-2. Consultar ciudades por región  
-3. Consultar partidos  
-4. Consultar candidatos por:
-   - Ciudad
-   - Región
-   - Partido
-5. Mostrar tarjetón de alcaldía por ciudad
-6. Mostrar tarjetón presidencial
-7. Consultar censo electoral
-8. Volver
-
-### Consultas solicitadas por el enunciado  
-
-- Candidatos a alcaldías por partido y región.  
-- Candidatos a alcaldías por partido en las capitales.  
-- Candidatos a presidencia y vicepresidencia.  
-- Candidato a alcaldía por ciudad y por partido.  
-- Tarjetón de alcaldía (incluye voto en blanco).  
-- Tarjetón presidencial (incluye voto en blanco).  
-- Censo electoral total y por ciudad.
-
-Los tarjetones incluyen voto en blanco.
-
----
-
-## 6. Modificación de Datos  
-
-Permite editar la información almacenada en memoria antes de simular.
-
-**Se puede:**  
-
-- Agregar candidato  
-- Editar candidato  
-- Eliminar candidato  
-- Modificar ciudades o partidos  
-- Actualizar regiones  
-- Guardar cambios
-
-**Nota importante:**  
-**Una vez inicie la simulación de votaciones no podrá eliminar ni agregar candidatos hasta finalizar.**
-
----
-
-## 7. Simulación Electoral  
-
-La simulación genera votaciones aleatorias respetando el censo electoral.
-
-**El sistema:**  
-
-1. Genera para cada ciudad:
-   - Votos por cada candidato de alcaldía
-   - Votos en blanco
-   - Votos nulos
-   - Abstención
-
-2. Genera para el país:
-   - Votos por cada fórmula presidencial
-   - Votos en blanco
-   - Votos nulos
-   - Abstención
-
-**Reglas:**  
-
-- El número total de votos no puede superar el censo electoral.  
-- Los votos se distribuyen de forma aleatoria pero consistente.  
-- Se genera un resultado por ciudad y para el país.
-
-Al finalizar, los datos se envían al módulo de escrutinio.
-
----
-
-## 8. Escrutinio  
-
-Este módulo muestra los resultados electorales ciudad por ciudad y a nivel nacional.
-
-**Para alcaldías por ciudad:**  
-
-- Lista de candidatos  
-- Votos obtenidos  
-- Porcentajes  
-- Votos en blanco  
-- Votos nulos  
-- Abstención  
-- Ganador
-
-**Para presidencia:**  
-
-- Totales nacionales por candidato  
-- Votos en blanco  
-- Votos nulos  
-- Abstención  
-- Ganador  
-- Verificación de segunda vuelta:
-  - Si ningún candidato supera el 50%, se muestran los dos más votados
-
----
-
-## 9. Estadísticas  
-
-El sistema genera reportes avanzados solicitados en el documento oficial.
-
-### Estadísticas para Alcaldías  
-
-**Reporte general por región:**  
-- Total votos  
-- Votos en blanco  
-- Votos nulos  
-- Abstención  
-- Porcentajes
-
-**Reporte detallado por región:**  
-- Alcaldes electos por partido  
-- Totales por sexo (hombres/mujeres)
-
-**Totales nacionales:**  
-- Totales por partido  
-- Totales por sexo
-
-### Estadísticas para Presidente  
-
-**Reporte general por región**  
-**Reporte nacional consolidado**  
-**Reporte detallado por departamento:**  
-- Votos por partido  
-- Votos por sexo  
-- Porcentajes
-
-**Reporte total nacional:**  
-- Votos por partido  
-- Votos por sexo
-
-**Evaluación de segunda vuelta:**  
-- Si aplica, muestra los dos candidatos con mayor votación
-
----
-
-## 10. Archivos y Persistencia  
-
-Al finalizar la simulación se actualizan los archivos en `data/`:  
-
-- Nuevos candidatos (si fueron agregados antes de simular)  
-- Censos actualizados  
-- Datos de resultados recientes
-
-Estos archivos permiten realizar múltiples simulaciones consecutivas sin perder información.
-
----
-
-## 11. Mensajes Comunes  
-
-- **"Dato inválido"**  
-  La entrada no cumple el formato esperado.
-
-- **"No existen registros para esta consulta"**  
-  La ciudad, candidato o partido no tiene datos asociados.
-
-- **"El archivo no pudo ser cargado"**  
-  Verifique que la carpeta `data/` se encuentre junto al ejecutable.
-
-- **"Acción no permitida durante la simulación"**  
-  Intento de modificar candidatos después de iniciar la votación.
-
----
-
-## 12. Finalizar el Programa  
-
-En el menú principal elija:  
-Salir
-
-text
-
-Se le consultará si desea guardar cambios antes de cerrar.
-
----
-
-## 13. Soporte  
-
-Revise la carpeta `docs/` para:  
-
-- Diseño de la solución  
-- Estructura de archivos  
-- Diagramas  
-- Manual del usuario  
-- Documento del proyecto
-
-Para soporte adicional, contacte al profesor o al equipo de desarrollo.
-
----
-
-*Última actualización: Diciembre 2025*  
-*Versión del sistema: 1.0*
+# Manual de Usuario
+
+Este manual guía el uso del Sistema de Simulación Electoral por consola.
+
+## Requisitos
+- Compilador Dev-C++ (o compatible C++).
+- Archivos planos en `data/maestros/`:
+  - `regiones.txt`, `ciudades.txt`, `partidos.txt`,
+  - `candidatos_alcaldia.txt`, `candidatos_presidencia.txt`.
+
+## Inicio
+1. Compile el proyecto (abra `main.cpp` en Dev-C++ y construya).
+2. Ejecute el binario.
+3. Si la carga es exitosa, verá el menú principal.
+
+## Menú Principal
+- Consultas:
+  - Por partido y región: lista de candidatos a alcaldía con nombre, edad, sexo.
+  - Por partido: candidatos a alcaldías de capitales.
+  - Presidencia: lista de candidatos y sus vicepresidentes con datos personales.
+  - Por ciudad: por cada partido, el candidato a la alcaldía.
+  - Censo electoral: por ciudad y total nacional.
+- Tarjetones:
+  - Alcaldía por ciudad: incluye 0. Voto en blanco, 1..n candidatos.
+  - Presidencia: incluye voto en blanco, partido y dupla presidente–vicepresidente.
+- Simulación:
+  - Iniciar simulación de votos (alcaldía y presidencia), con blancos, nulos y abstención.
+  - Visualizar resultados:
+    - Por ciudad: votos y porcentajes, ganador.
+    - Nacional presidencia: votos y porcentajes, ganador.
+  - Estadísticas:
+    - Alcaldías: general y detallado por región, totales nacionales por partido y sexo.
+    - Presidencia: general por región y país, detallado por departamento y total país, verificación de segunda vuelta.
+- Guardado:
+  - Guardar cambios para futuras ejecuciones.
+
+## Reglas durante simulación
+- No se pueden agregar ni eliminar candidatos mientras la simulación está activa.
+- La sumatoria de votos no supera el censo electoral de la ciudad (alcaldía) ni el total nacional (presidencia).
+
+## Notas de uso
+- La edad de las personas se calcula a partir de su fecha de nacimiento (no se edita manualmente).
+- Para candidatos a alcaldía, la ciudad de residencia debe coincidir con la ciudad donde compiten; de lo contrario no serán registrados.
+- Si algún archivo falta o tiene formato inválido, el sistema informará error al cargar.
+
+## Formatos de archivo sugeridos
+- Campos separados por delimitador (por ejemplo, `|`), una entidad por línea.
+- Usar nombres de regiones y ciudades consistentes entre archivos.
+
+## Solución de problemas
+- “Error cargando datos iniciales”: verifique rutas y contenido de `data/maestros`.
+- Candidatos no aparecen en tarjetón de alcaldía: revise que su ciudad de residencia exista y coincida; que el partido exista.
+- Estadísticas vacías: asegúrese de ejecutar la simulación antes de consultar resultados.

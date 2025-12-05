@@ -59,10 +59,10 @@ public:
     SistemaElectoral() : simulando(false) {}
 
     bool inicializar(const string& rutaRegiones,
-                     const string& rutaCiudades,
-                     const string& rutaPartidos,
-                     const string& rutaCandidatosAlcaldia,
-                     const string& rutaCandidatosPresidencia) {
+                    const string& rutaCiudades,
+                    const string& rutaPartidos,
+                    const string& rutaCandidatosAlcaldia,
+                    const string& rutaCandidatosPresidencia) {
         if (!GestorRegiones::cargar(rutaRegiones, regiones)) return false;
         if (!GestorCiudades::cargar(rutaCiudades, ciudades)) return false;
         if (!GestorPartidos::cargar(rutaPartidos, partidos)) return false;
@@ -76,13 +76,13 @@ public:
     }
 
     bool guardar(const string& rutaRegiones,
-                 const string& rutaCiudades,
-                 const string& rutaPartidos,
-                 const string& rutaCandidatosAlcaldia,
-                 const string& rutaCandidatosPresidencia,
-                 const string& rutaRegionesCiudades,
-                 const string& rutaCiudadPartidos,
-                 const string& rutaCiudadPartidoCandidato) {
+                const string& rutaCiudades,
+                const string& rutaPartidos,
+                const string& rutaCandidatosAlcaldia,
+                const string& rutaCandidatosPresidencia,
+                const string& rutaRegionesCiudades,
+                const string& rutaCiudadPartidos,
+                const string& rutaCiudadPartidoCandidato) {
 
         bool ok = true;
         ok = ok && GestorRegiones::guardar(rutaRegiones, regiones);

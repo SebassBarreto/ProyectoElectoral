@@ -38,7 +38,7 @@ public:
     // toFileFormat
     string toFileFormat() const {
         stringstream ss;
-        ss << nombre << " " << representanteLegal << " " << idPartido;
+        ss << nombre << "|" << representanteLegal << "|" << idPartido;
         return ss.str();
     }
 };

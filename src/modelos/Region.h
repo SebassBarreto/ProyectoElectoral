@@ -40,7 +40,7 @@ public:
         descripcion = d;
     }
 
-    string toSting() const{
+    string toString() const{
         return to_string(id) +"|"+nombre+"|"+descripcion;
     }
 

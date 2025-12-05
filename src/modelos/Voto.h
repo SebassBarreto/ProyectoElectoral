@@ -36,10 +36,10 @@ public:
 
     //voto valido (candidato elegido)
     Voto(int ciudad, int partido, int candidato, char sexoV): idCiudad(ciudad), idPartido(partido), idCandidato(candidato),
-    tipo(TipoVoto::Valido), sexo(sexoV){}
+    tipo(TipoVoto::Valido), sexo((sexoV=='M'||sexoV=='F')?sexoV:'M'){} 
 
     //voto blanco/nulo/abstencion (sin candidato - partido)
-    Voto(TipoVoto t, int ciudad, char sexoV): idCiudad(ciudad), idPartido(0), idCandidato(-1), tipo(t), sexo(sexoV) {}
+    Voto(TipoVoto t, int ciudad, char sexoV): idCiudad(ciudad), idPartido(0), idCandidato(-1), tipo(t), sexo((sexoV=='M'||sexoV=='F')?sexoV:'M') {} 
 
     //getters
     int getIdCiudad() const{ 
@@ -76,7 +76,7 @@ public:
         tipo = t;
     }
     void setSexo(char s){
-        sexo = s;
+        sexo = (s=='M'||s=='F')?s:'M'; 
     }
 
     //utilidades

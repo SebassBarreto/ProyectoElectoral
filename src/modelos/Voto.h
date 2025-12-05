@@ -100,6 +100,120 @@ public:
         return '?';
     }
 
+    bool esValido() const{
+        return tipo == TipoVoto::Valido;
+    }
+    bool esBlanco() const{
+        return tipo == TipoVoto::Blanco;
+    }
+    bool esNulo() const{
+        return tipo == TipoVoto::Nulo;
+    }
+    bool esAbstencion() const{
+        return tipo == TipoVoto::Abstencion;
+    }
+
+    string toString() const{
+        stringstream ss;
+        ss << "Voto{ ciudad="<<idCiudad
+            <<", tipo="<<tipoStr(tipo)
+            <<", sexo="<<sexo;
+        if(esValido()){
+            ss << ", partido="<<idPartido
+                <<", candidato="<<idCandidato;
+        }
+
+        ss << "}";
+        return ss.str();
+    }
+
+    //serialización a archivo plano
+    std::string toFileFormat() const {
+        std::stringstream ss;
+        ss << idCiudad << "|"
+            << tipoChar(tipo) << "|"
+            << sexo << "|"
+            << idPartido << "|"
+            << idCandidato;
+        return ss.str();
+    }
+
+    //parse desde línea de archivo plano: idCiudad|tipo|sexo|idPartido|idCandidato
+    //retorna true si el parseo fue exitoso
+    bool fromFileFormat(const std::string& linea) {
+        //busqueda manual de separadores para compatibilidad con dev c++
+        int campos[4] = { -1, -1, -1, -1 }; // posiciones de '|'
+        int countSep = 0;
+        for (int i = 0; i < (int)linea.size() && countSep < 4; ++i) {
+            if (linea[i] == '|') {
+                campos[countSep++] = i;
+            }
+        }
+        if (countSep != 4) return false;
+
+        string sCiudad     = linea.substr(0, campos[0]);
+        string sTipo       = linea.substr(campos[0] + 1, campos[1] - campos[0] - 1);
+        string sSexo       = linea.substr(campos[1] + 1, campos[2] - campos[1] - 1);
+        string sPartido    = linea.substr(campos[2] + 1, campos[3] - campos[2] - 1);
+        string sCandidato  = linea.substr(campos[3] + 1);
+
+        //conversiones basicas
+        int ciudad = -1, partido = 0, candidato = -1;
+        try {
+            ciudad    = std::stoi(sCiudad);
+            partido   = std::stoi(sPartido);
+            candidato = std::stoi(sCandidato);
+        } catch (...) {
+            return false;
+        }
+
+        //tipo
+        TipoVoto t = TipoVoto::Nulo;
+        if (sTipo.size() == 1) {
+            char tc = sTipo[0];
+            if (tc == 'V') t = TipoVoto::Valido;
+            else if (tc == 'B') t = TipoVoto::Blanco;
+            else if (tc == 'N') t = TipoVoto::Nulo;
+            else if (tc == 'X') t = TipoVoto::Abstencion;
+            else return false;
+        } else {
+            return false;
+        }
+
+        //sexo
+        char sx = (sSexo.empty() ? 'M' : sSexo[0]);
+        if (sx != 'M' && sx != 'F') sx = 'M';
+
+        idCiudad    = ciudad;
+        idPartido   = partido;
+        idCandidato = candidato;
+        tipo        = t;
+        sexo        = sx;
+        return true;
+    }
+
+    //comparadores para estructuras genéricas y algoritmos
+    bool operator==(const Voto& other) const {
+        return idCiudad == other.idCiudad &&
+                idPartido == other.idPartido &&
+                idCandidato == other.idCandidato &&
+                tipo == other.tipo &&
+                sexo == other.sexo;
+    }
+
+    bool operator<(const Voto& other) const {
+        if (idCiudad != other.idCiudad) return idCiudad < other.idCiudad;
+        if (tipo != other.tipo)         return (int)tipo < (int)other.tipo;
+        if (idPartido != other.idPartido) return idPartido < other.idPartido;
+        return idCandidato < other.idCandidato;
+    }
+
+    //impresion compatible con nodos genéricos
+    friend ostream& operator<<(ostream& os, const Voto& v) {
+        os << v.toString();
+        return os;
+    }
+
 };
 
 

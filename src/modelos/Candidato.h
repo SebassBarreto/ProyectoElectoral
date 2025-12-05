@@ -4,6 +4,7 @@
 
 #include <string>
 #include <ctime>
+#include <sstream>
 using namespace std;
 
 class Candidato {
@@ -71,9 +72,33 @@ public:
         }
         return edad;
     }
+
+    // toString para mostrar en pantalla
+    string toString() const {
+        stringstream ss;
+        ss << nombre << " " << apellido
+           << "  ID: " << identificacion
+           << "  Edad: " << calcularEdad()
+           << "  Sexo: " << sexo
+           << "  Estado Civil: " << estadoCivil;
+        return ss.str();
+    }
+
+    // toFileFormat para guardar en archivo
+    string toFileFormat() const {
+        stringstream ss;
+        ss << nombre << " " << apellido << " " << identificacion << " "
+           << sexo << " " << estadoCivil << " "
+           << diaNacimiento << " " << mesDNacimiento << " " << birthYear << " "
+           << ciudadNacimiento << " " << ciudadResidencia << " "
+           << partido << " " << (esPresidencial ? "P" : "A") << " "
+           << vicepresidente;
+        return ss.str();
+    }
 };
 #endif //CANDIDATO_H
 
     
 
 #endif //CANDIDATO_H
+

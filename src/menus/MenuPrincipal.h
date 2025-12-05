@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <limits> // FIX: incluir encabezado para std::numeric_limits
 #include "../sistema/SistemaElectoral.h"
 #include "../sistema/Tarjeton.h"
 #include "../sistema/Consultas.h"
@@ -18,7 +19,7 @@ private:
 
     void pausar() {
         cout << "Presione ENTER para continuar...";
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // FIX
     }
 
 public:
@@ -83,7 +84,7 @@ public:
 
         int idBogota = -1;
         if (sys.obtenerIdCiudadPorNombre("Bogota", idBogota)) {
-            ResultadoElectoral resBog;
+            ResultadoElectoral resBog(0); // FIX: constructor requiere censo
             if (Simulador::simularAlcaldiaCiudad(sys, idBogota, resBog)) {
                 Escrutinio::escribirResultadosAlcaldiaPorCiudad("data/resultados/resultados_ciudad_alcaldia.txt", "Bogota", resBog);
                 cout << resBog.toString() << "\n";

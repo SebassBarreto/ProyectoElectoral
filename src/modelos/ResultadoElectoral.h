@@ -6,7 +6,8 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
-#include <vector>
+
+using namespace std;
 
 class ResultadoElectoral {
 private:
@@ -27,7 +28,7 @@ public:
     // Constructor
     ResultadoElectoral(int censo)
         : votosEnBlanco(0), votosNulos(0), abstencion(0),
-          censoElectoral(censo), ganador(""), requiereSegundaVuelta(false) {
+            censoElectoral(censo), ganador(""), requiereSegundaVuelta(false) {
         if (censo <= 0) {
             censoElectoral = 0;
         }
@@ -67,7 +68,12 @@ public:
             return;
         }
 
-
+        auto maxCandidato = std::max_element(
+            votosPorCandidato.begin(),
+            votosPorCandidato.end(),
+            [](const std::pair<const std::string, int>& a, const std::pair<const std::string, int>& b) {
+                return a.second < b.second;
+            });
 
         ganador = maxCandidato->first;
         int votosGanador = maxCandidato->second;
@@ -148,21 +154,21 @@ public:
 
         ss << "Censo electoral: " << censoElectoral <<endl;
         ss << "Votos emitidos: " << getTotalVotosEmitidos()
-           << " (" << std::fixed << std::setprecision(2)
-           << getPorcentajeSobreCenso(getTotalVotosEmitidos()) << "%)" << endl;
+            << " (" << std::fixed << std::setprecision(2)
+            << getPorcentajeSobreCenso(getTotalVotosEmitidos()) << "%)" << endl;
         ss << "Abstención: " << abstencion
-           << " (" << getPorcentajeSobreCenso(abstencion) << "%)" << endl;
+            << " (" << getPorcentajeSobreCenso(abstencion) << "%)" << endl;
 
         ss << "VOTOS VÁLIDOS: " << endl;
         for (const auto& par : votosPorCandidato) {
             ss << "  " << std::left << std::setw(20) << par.first
-               << ": " << std::right << std::setw(6) << par.second << " votos"
-               << " (" << getPorcentajeSobreValidos(par.second) << "% válidos)"
-               << " (" << getPorcentajeSobreCenso(par.second) << "% censo)" << endl;
+                << ": " << std::right << std::setw(6) << par.second << " votos"
+                << " (" << getPorcentajeSobreValidos(par.second) << "% válidos)"
+                << " (" << getPorcentajeSobreCenso(par.second) << "% censo)" << endl;
         }
 
         ss << "Votos en blanco: " << votosEnBlanco
-           << " (" << getPorcentajeSobreValidos(votosEnBlanco) << "% válidos)" << endl;
+            << " (" << getPorcentajeSobreValidos(votosEnBlanco) << "% válidos)" << endl;
         ss << "Votos nulos: " << votosNulos << endl;
         ss << "Total validos: " << getTotalVotosValidos() << endl;
 

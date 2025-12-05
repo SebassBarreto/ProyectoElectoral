@@ -1,0 +1,13 @@
+SEGUNDA VUELTA PRESIDENCIAL
+===========================
+
+Candidato 1: Iván Castro
+  Partido: Partido E
+  Votos: 1357760
+  Porcentaje: 34.67%
+
+Candidato 2: Helena Martinez
+  Partido: Partido D
+  Votos: 837840
+  Porcentaje: 21.40%
+

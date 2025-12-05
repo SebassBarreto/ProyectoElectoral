@@ -12,9 +12,10 @@ private:
     string nombre;
     int idRegion;
     int poblacion;
+    bool esCapital;
 public:
-    Ciudad(): id(0), nombre(""), idRegion(0), poblacion(0){}
-    Ciudad(int i, const string& n, int r, int p): id(i), nombre(n), idRegion(r), poblacion(p){}
+    Ciudad(): id(0), nombre(""), idRegion(0), poblacion(0), esCapital(false){}
+    Ciudad(int i, const string& n, int r, int p, bool cap = false): id(i), nombre(n), idRegion(r), poblacion(p), esCapital(cap){}
 
     //getters
     int getId() const{
@@ -33,6 +34,10 @@ public:
         return poblacion;
     }
 
+    bool getEsCapital() const{
+        return esCapital;
+    }
+
     void setId(int i){
         id = i;
     }
@@ -49,6 +54,10 @@ public:
         poblacion = p;
     }
 
+    void setEsCapital(bool cap){
+        esCapital = cap;
+    }
+
     string toString() const{
         return to_string(id) + "|"+nombre+"|"+to_string(idRegion)+"|"+to_string(poblacion);
     }
@@ -58,6 +67,7 @@ public:
             << ", nombre=\"" << nombre
             << "\", idRegion=" << idRegion
             << ", poblacion=" << poblacion
+            << ", esCapital=" << (esCapital ? "Si" : "No")
             << " }" << endl;
     }
 };

@@ -1,0 +1,51 @@
+ESTADISTICAS ALCALDIA DETALLE POR REGION
+=========================================
+
+Region: Andina (ID: 1)
+  Total alcaldes electos: 10
+  Alcaldes por partido:
+    Partido A: 2 (20.00%)
+    Partido B: 1 (10.00%)
+    Partido C: 3 (30.00%)
+    Partido D: 4 (40.00%)
+  Hombres: 5 (50.00%)
+  Mujeres: 5 (50.00%)
+
+Region: Pacifico (ID: 3)
+  Total alcaldes electos: 1
+  Alcaldes por partido:
+    Partido B: 1 (100.00%)
+  Hombres: 0 (0.00%)
+  Mujeres: 1 (100.00%)
+
+Region: Caribe (ID: 2)
+  Total alcaldes electos: 4
+  Alcaldes por partido:
+    Partido B: 1 (25.00%)
+    Partido C: 2 (50.00%)
+    Partido D: 1 (25.00%)
+  Hombres: 2 (50.00%)
+  Mujeres: 2 (50.00%)
+
+Region: Orinoquia (ID: 4)
+  Total alcaldes electos: 2
+  Alcaldes por partido:
+    Partido A: 1 (50.00%)
+    Partido C: 1 (50.00%)
+  Hombres: 2 (100.00%)
+  Mujeres: 0 (0.00%)
+
+Region: Amazonia (ID: 5)
+  Total alcaldes electos: 2
+  Alcaldes por partido:
+    Partido D: 2 (100.00%)
+  Hombres: 0 (0.00%)
+  Mujeres: 2 (100.00%)
+
+Region: Insular (ID: 6)
+  Total alcaldes electos: 1
+  Alcaldes por partido:
+    Partido D: 1 (100.00%)
+  Hombres: 0 (0.00%)
+  Mujeres: 1 (100.00%)
+

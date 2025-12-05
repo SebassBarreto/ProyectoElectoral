@@ -191,11 +191,10 @@ private:
             Candidato c;
             if (!candidatosAlcaldia.obtenerElemento(i, c)) continue;
 
+            // Candidates must reside in the city to be registered (no fallback to ciudadNacimiento)
             int idCiudad = -1;
             if (!idxCiudadPorNombre.buscar(kCiudadNombre(c.getCiudadResidencia()), idCiudad)) {
-                if (!idxCiudadPorNombre.buscar(kCiudadNombre(c.getCiudadNacimiento()), idCiudad)) {
-                    continue;
-                }
+                continue; // Skip registration if ciudadResidencia is not found
             }
             int idPartido = -1;
             if (!idxPartidoPorNombre.buscar(kPartidoNombre(c.getPartido()), idPartido)) continue;

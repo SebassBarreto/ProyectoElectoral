@@ -1,0 +1,8 @@
+PAIS
+Censo: 20300000
+Emitidos: 4479594
+Abstencion: 15820406
+Votos nulos: 563541
+Votos en blanco: 453864
+Ganador: Iván Castro
+Segunda vuelta: SI

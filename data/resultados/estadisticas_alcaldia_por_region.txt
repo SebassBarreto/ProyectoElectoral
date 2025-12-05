@@ -1,0 +1,45 @@
+ESTADISTICAS ALCALDIA POR REGION
+================================
+
+Region: Andina (ID: 1)
+  Censo electoral: 14010000
+  Total votos emitidos: 5192342 (37.06%)
+  Votos en blanco: 204836 (1.46%)
+  Votos nulos: 147127 (1.05%)
+  Abstencion: 8817658 (62.94%)
+
+Region: Pacifico (ID: 3)
+  Censo electoral: 2200000
+  Total votos emitidos: 1203920 (54.72%)
+  Votos en blanco: 69344 (3.15%)
+  Votos nulos: 69750 (3.17%)
+  Abstencion: 996080 (45.28%)
+
+Region: Caribe (ID: 2)
+  Censo electoral: 3070000
+  Total votos emitidos: 1343100 (43.75%)
+  Votos en blanco: 93801 (3.06%)
+  Votos nulos: 37978 (1.24%)
+  Abstencion: 1726900 (56.25%)
+
+Region: Orinoquia (ID: 4)
+  Censo electoral: 730000
+  Total votos emitidos: 313000 (42.88%)
+  Votos en blanco: 10590 (1.45%)
+  Votos nulos: 9993 (1.37%)
+  Abstencion: 417000 (57.12%)
+
+Region: Amazonia (ID: 5)
+  Censo electoral: 220000
+  Total votos emitidos: 103615 (47.10%)
+  Votos en blanco: 8004 (3.64%)
+  Votos nulos: 3249 (1.48%)
+  Abstencion: 116385 (52.90%)
+
+Region: Insular (ID: 6)
+  Censo electoral: 70000
+  Total votos emitidos: 19108 (27.30%)
+  Votos en blanco: 279 (0.40%)
+  Votos nulos: 391 (0.56%)
+  Abstencion: 50892 (72.70%)
+

@@ -25,16 +25,16 @@ public:
     // Constructor
     Candidato()
     : nombre(""), apellido(""), identificacion(""), sexo('M'),
-      estadoCivil(""), diaNacimiento(0), mesDacimiento(0), anoNacimiento(0),
-      ciudadNacimiento(""), ciudadResidencia(""), partido(""),
-      esPresidencial(false), vicepresidente(""), numeroTarjeton(0) {}
+        estadoCivil(""), diaNacimiento(0), mesDNacimiento(0), birthYear(0),
+        ciudadNacimiento(""), ciudadResidencia(""), partido(""),
+        esPresidencial(false), vicepresidente(""), numeroTarjeton(0) {}
 
     Candidato(string n, string a, string id, char s, string ec,
-                     int d, int m, int y, string cn, string cr, string p, bool pres, string vp)
+                        int d, int m, int y, string cn, string cr, string p, bool pres, string vp)
     : nombre(n), apellido(a), identificacion(id), sexo(s), estadoCivil(ec),
-      diaNacimiento(d), mesDacimiento(m), anoNacimiento(y),
-      ciudadNacimiento(cn), ciudadResidencia(cr), partido(p),
-      esPresidencial(pres), vicepresidente(vp), numeroTarjeton(0) {}
+        diaNacimiento(d), mesDNacimiento(m), birthYear(y),
+        ciudadNacimiento(cn), ciudadResidencia(cr), partido(p),
+        esPresidencial(pres), vicepresidente(vp), numeroTarjeton(0) {}
 
     // Getters
     string getNombre() const { return nombre; }
@@ -72,8 +72,4 @@ public:
         return edad;
     }
 };
-#endif //CANDIDATO_H
-
-    
-
 #endif //CANDIDATO_H

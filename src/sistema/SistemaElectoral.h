@@ -30,30 +30,68 @@ using namespace std;
 
 class SistemaElectoral {
 private:
-    // datos cargados
     Lista<Region> regiones;
     Lista<Ciudad> ciudades;
     Lista<Partido> partidos;
     Lista<Candidato> candidatosAlcaldia;
     Lista<Candidato> candidatosPresidencia;
 
-    // indices
-    IndiceAVL idxCiudadPorNombre;       // "Ciudad:<nombre>" -> idCiudad
-    IndiceAVL idxPartidoPorNombre;      // "Partido:<nombre>" -> idPartido
-    IndiceAVL idxCandidatoPorIdent;     // "Cand:<ident>" -> posicion (alcaldia 0..n-1, presidencia offset 100000+j)
-    IndiceAVL idxPresidentePorPartido;  // "Presidente:<idPartido>" -> id candidato presidencial (int)
+    IndiceAVL idxCiudadPorNombre;
+    IndiceAVL idxPartidoPorNombre;
+    IndiceAVL idxCandidatoPorIdent;
+    IndiceAVL idxPresidentePorPartido;
 
-    // multilistas
     MultilistaElectoral mElectoral;
-
-    // control
     bool simulando;
 
-    // helpers de clave
     static string kCiudadNombre(const string& nombre) { return string("Ciudad:") + nombre; }
     static string kPartidoNombre(const string& nombre) { return string("Partido:") + nombre; }
     static string kCandId(const string& id) { return string("Cand:") + id; }
     static string kPresPorPartido(int idPartido) { return string("Presidente:") + to_string(idPartido); }
+
+    int generarIdCiudad() const {
+        int maxId = 0; Ciudad c;
+        for (int i = 0; i < ciudades.obtenerTamano(); ++i) {
+            if (ciudades.obtenerElemento(i, c)) if (c.getId() > maxId) maxId = c.getId();
+        }
+        return maxId + 1;
+    }
+    int generarIdPartido() const {
+        int maxId = 0; Partido p;
+        for (int i = 0; i < partidos.obtenerTamano(); ++i) {
+            if (partidos.obtenerElemento(i, p)) if (p.getId() > maxId) maxId = p.getId();
+        }
+        return maxId + 1;
+    }
+    int generarIdRegion() const {
+        int maxId = 0; Region r;
+        for (int i = 0; i < regiones.obtenerTamano(); ++i) {
+            if (regiones.obtenerElemento(i, r)) if (r.getId() > maxId) maxId = r.getId();
+        }
+        return maxId + 1;
+    }
+
+    // Crea ciudad si no existe
+    int ensureCiudad(const string& nombreCiudad) {
+        int id = -1;
+        if (idxCiudadPorNombre.buscar(kCiudadNombre(nombreCiudad), id)) return id;
+        int nuevoId = generarIdCiudad();
+        // idRegion desconocido; usar 0 y ajustar multilista por nombre de region si luego se conoce
+        Ciudad nueva(nuevoId, nombreCiudad, 0, 300000, true);
+        ciudades.insertarFinal(nueva);
+        idxCiudadPorNombre.insertar(kCiudadNombre(nombreCiudad), nuevoId);
+        return nuevoId;
+    }
+
+    // Crea partido si no existe
+    int ensurePartido(const string& nombrePartido) {
+        int id = -1;
+        if (idxPartidoPorNombre.buscar(kPartidoNombre(nombrePartido), id)) return id;
+        int nuevoId = generarIdPartido();
+        partidos.insertarFinal(Partido(nombrePartido, "Rep " + nombrePartido, nuevoId));
+        idxPartidoPorNombre.insertar(kPartidoNombre(nombrePartido), nuevoId);
+        return nuevoId;
+    }
 
 public:
     SistemaElectoral() : simulando(false) {}
@@ -63,11 +101,12 @@ public:
                     const string& rutaPartidos,
                     const string& rutaCandidatosAlcaldia,
                     const string& rutaCandidatosPresidencia) {
-        if (!GestorRegiones::cargar(rutaRegiones, regiones)) return false;
-        if (!GestorCiudades::cargar(rutaCiudades, ciudades)) return false;
-        if (!GestorPartidos::cargar(rutaPartidos, partidos)) return false;
-        if (!GestorCandidatos::cargarAlcaldia(rutaCandidatosAlcaldia, candidatosAlcaldia)) return false;
-        if (!GestorCandidatos::cargarPresidencia(rutaCandidatosPresidencia, candidatosPresidencia)) return false;
+        // si falta algún archivo, igual inicializar estructuras vacías
+        GestorRegiones::cargar(rutaRegiones, regiones);
+        GestorCiudades::cargar(rutaCiudades, ciudades);
+        GestorPartidos::cargar(rutaPartidos, partidos);
+        GestorCandidatos::cargarAlcaldia(rutaCandidatosAlcaldia, candidatosAlcaldia);
+        GestorCandidatos::cargarPresidencia(rutaCandidatosPresidencia, candidatosPresidencia);
 
         construirIndicesBasicos();
         mElectoral.construirRegionesCiudades(ciudades);
@@ -94,19 +133,16 @@ public:
         return ok;
     }
 
-    // control simulacion
     bool estaSimulando() const { return simulando; }
     void comenzarSimulacion() { simulando = true; }
     void finalizarSimulacion() { simulando = false; }
 
-    // getters datos
     const Lista<Region>& getRegiones() const { return regiones; }
     const Lista<Ciudad>& getCiudades() const { return ciudades; }
     const Lista<Partido>& getPartidos() const { return partidos; }
     const Lista<Candidato>& getCandidatosAlcaldia() const { return candidatosAlcaldia; }
     const Lista<Candidato>& getCandidatosPresidencia() const { return candidatosPresidencia; }
 
-    // indices y multilistas
     MultilistaElectoral& getMultilistaElectoral() { return mElectoral; }
     const MultilistaElectoral& getMultilistaElectoral() const { return mElectoral; }
 
@@ -147,21 +183,18 @@ public:
 
 private:
     void construirIndicesBasicos() {
-        // ciudades por nombre
         for (int i = 0; i < ciudades.obtenerTamano(); ++i) {
             Ciudad c;
             if (ciudades.obtenerElemento(i, c)) {
                 idxCiudadPorNombre.insertar(kCiudadNombre(c.getNombre()), c.getId());
             }
         }
-        // partidos por nombre
         for (int i = 0; i < partidos.obtenerTamano(); ++i) {
             Partido p;
             if (partidos.obtenerElemento(i, p)) {
                 idxPartidoPorNombre.insertar(kPartidoNombre(p.getNombre()), p.getId());
             }
         }
-        // candidatos por identificacion
         for (int i = 0; i < candidatosAlcaldia.obtenerTamano(); ++i) {
             Candidato c;
             if (candidatosAlcaldia.obtenerElemento(i, c)) {
@@ -174,12 +207,10 @@ private:
                 idxCandidatoPorIdent.insertar(kCandId(c.getIdentificacion()), 100000 + j);
             }
         }
-        // presidente por partido
         for (int i = 0; i < candidatosPresidencia.obtenerTamano(); ++i) {
             Candidato c;
             if (!candidatosPresidencia.obtenerElemento(i, c)) continue;
-            int idPartido = -1;
-            if (!idxPartidoPorNombre.buscar(kPartidoNombre(c.getPartido()), idPartido)) continue;
+            int idPartido = ensurePartido(c.getPartido());
             int idCandidatoNum = 0;
             try { idCandidatoNum = stoi(c.getIdentificacion()); } catch (...) { continue; }
             idxPresidentePorPartido.insertar(kPresPorPartido(idPartido), idCandidatoNum);
@@ -191,13 +222,8 @@ private:
             Candidato c;
             if (!candidatosAlcaldia.obtenerElemento(i, c)) continue;
 
-            // Candidates must reside in the city to be registered (no fallback to ciudadNacimiento)
-            int idCiudad = -1;
-            if (!idxCiudadPorNombre.buscar(kCiudadNombre(c.getCiudadResidencia()), idCiudad)) {
-                continue; // Skip registration if ciudadResidencia is not found
-            }
-            int idPartido = -1;
-            if (!idxPartidoPorNombre.buscar(kPartidoNombre(c.getPartido()), idPartido)) continue;
+            int idCiudad = ensureCiudad(c.getCiudadResidencia());
+            int idPartido = ensurePartido(c.getPartido());
 
             int idCandidatoNum = 0;
             try { idCandidatoNum = stoi(c.getIdentificacion()); } catch (...) { continue; }

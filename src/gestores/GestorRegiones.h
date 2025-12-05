@@ -13,23 +13,32 @@ class GestorRegiones {
 public:
     static bool cargar(const string& ruta, Lista<Region>& lista) {
         lista.limpiar();
-        const int CAP = 512;
+        const int CAP = 1024;
         string lineas[CAP];
         int n = 0;
         if (!GestorArchivos::leerLineas(ruta, lineas, CAP, n)) return false;
 
+        int nextId = 1;
         for (int i = 0; i < n; ++i) {
             const string& s = lineas[i];
             int p1 = (int)s.find('|');
-            int p2 = (p1 == -1 ? -1 : (int)s.find('|', p1 + 1));
-            if (p1 == -1 || p2 == -1) continue;
+            if (p1 == -1) continue;
+            int p2 = (int)s.find('|', p1 + 1);
 
-            int id = 0;
-            string nombre = s.substr(p1 + 1, p2 - p1 - 1);
-            string desc = s.substr(p2 + 1);
-            try { id = stoi(s.substr(0, p1)); } catch (...) { continue; }
-
-            lista.insertarFinal(Region(id, nombre, desc));
+            if (p2 == -1) {
+                // Formato "nombre|desc" -> autogenerar id
+                string nombre = s.substr(0, p1);
+                string desc = s.substr(p1 + 1);
+                lista.insertarFinal(Region(nextId++, nombre, desc));
+            } else {
+                // Formato "id|nombre|desc"
+                int id = 0;
+                string nombre = s.substr(p1 + 1, p2 - p1 - 1);
+                string desc = s.substr(p2 + 1);
+                try { id = stoi(s.substr(0, p1)); } catch (...) { id = nextId++; }
+                if (id >= nextId) nextId = id + 1;
+                lista.insertarFinal(Region(id, nombre, desc));
+            }
         }
         return true;
     }

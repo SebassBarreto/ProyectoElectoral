@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 class MultilistaElectoral {
 private:
     Multilista<int,int,int> regionesCiudades;   // nivel1=region, nivel2=ciudad, nivel3 no usado

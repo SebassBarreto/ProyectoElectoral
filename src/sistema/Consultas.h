@@ -83,6 +83,37 @@ public:
         }
         return total;
     }
+
+    // NEW: Dado un partido, listar candidatos a alcaldías por cada capital
+    static void candidatosAlcaldiaPorPartidoEnCapitales(SistemaElectoral& sys, const string& nombrePartido, Lista<string>& out) {
+        out.limpiar();
+        int idPartido = -1;
+        if (!sys.obtenerIdPartidoPorNombre(nombrePartido, idPartido)) return;
+
+        const Lista<Ciudad>& ciudades = sys.getCiudades();
+        int n = ciudades.obtenerTamano();
+        
+        for (int i = 0; i < n; ++i) {
+            Ciudad ciudad;
+            if (!ciudades.obtenerElemento(i, ciudad)) continue;
+            
+            // Filter by capital cities only
+            if (!ciudad.getEsCapital()) continue;
+            
+            int idCandidato = -1;
+            if (!sys.getMultilistaElectoral().obtenerCandidatoAlcaldia(ciudad.getId(), idPartido, idCandidato)) continue;
+            
+            string ident = to_string(idCandidato);
+            int pos = -1;
+            if (!sys.obtenerPosCandidatoPorIdentificacion(ident, pos)) continue;
+            if (pos < 0 || pos >= sys.getCandidatosAlcaldia().obtenerTamano()) continue;
+            
+            Candidato c;
+            if (!sys.getCandidatosAlcaldia().obtenerElemento(pos, c)) continue;
+            
+            out.insertarFinal(ciudad.getNombre() + " | " + c.getNombre() + " " + c.getApellido() + " | " + c.getPartido());
+        }
+    }
 };
 
 #endif // CONSULTAS_H

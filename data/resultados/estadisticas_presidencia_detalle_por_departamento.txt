@@ -1,0 +1,263 @@
+ESTADISTICAS PRESIDENCIA DETALLE POR DEPARTAMENTO
+==================================================
+
+Ciudad/Departamento: Bogota
+  Censo: 7800000
+  Votos emitidos: 1583245 (20.30%)
+  Votos por partido:
+    Partido A: 120508 (7.63%)
+    Partido B: 672308 (42.59%)
+    Partido C: 264976 (16.79%)
+    Partido D: 25222 (1.60%)
+    Partido E: 424280 (26.88%)
+  Votos por sexo del votante:
+    Hombres: 753974 (50.02%)
+    Mujeres: 753320 (49.98%)
+
+Ciudad/Departamento: Medellin
+  Censo: 2500000
+  Votos emitidos: 704344 (28.17%)
+  Votos por partido:
+    Partido A: 195866 (28.37%)
+    Partido B: 132269 (19.16%)
+    Partido C: 68105 (9.86%)
+    Partido D: 108729 (15.75%)
+    Partido E: 139074 (20.14%)
+  Votos por sexo del votante:
+    Hombres: 322424 (50.06%)
+    Mujeres: 321619 (49.94%)
+
+Ciudad/Departamento: Cali
+  Censo: 2200000
+  Votos emitidos: 709359 (32.24%)
+  Votos por partido:
+    Partido A: 99032 (15.16%)
+    Partido B: 24787 (3.79%)
+    Partido C: 195834 (29.98%)
+    Partido D: 77655 (11.89%)
+    Partido E: 212764 (32.57%)
+  Votos por sexo del votante:
+    Hombres: 305309 (50.04%)
+    Mujeres: 304763 (49.96%)
+
+Ciudad/Departamento: Barranquilla
+  Censo: 1300000
+  Votos emitidos: 403429 (31.03%)
+  Votos por partido:
+    Partido A: 84693 (22.97%)
+    Partido B: 86986 (23.59%)
+    Partido C: 13721 (3.72%)
+    Partido D: 86815 (23.54%)
+    Partido E: 89779 (24.35%)
+  Votos por sexo del votante:
+    Hombres: 180578 (49.88%)
+    Mujeres: 181416 (50.12%)
+
+Ciudad/Departamento: Cartagena
+  Censo: 1000000
+  Votos emitidos: 216977 (21.70%)
+  Votos por partido:
+    Partido A: 35709 (18.54%)
+    Partido B: 35095 (18.22%)
+    Partido C: 20134 (10.45%)
+    Partido D: 27802 (14.43%)
+    Partido E: 62007 (32.19%)
+  Votos por sexo del votante:
+    Hombres: 90566 (50.11%)
+    Mujeres: 90181 (49.89%)
+
+Ciudad/Departamento: Bucaramanga
+  Censo: 600000
+  Votos emitidos: 157427 (26.24%)
+  Votos por partido:
+    Partido A: 2811 (1.84%)
+    Partido B: 53211 (34.76%)
+    Partido C: 26623 (17.39%)
+    Partido D: 50840 (33.21%)
+    Partido E: 13239 (8.65%)
+  Votos por sexo del votante:
+    Hombres: 73422 (50.04%)
+    Mujeres: 73302 (49.96%)
+
+Ciudad/Departamento: Cucuta
+  Censo: 750000
+  Votos emitidos: 165237 (22.03%)
+  Votos por partido:
+    Partido A: 49213 (33.84%)
+    Partido B: 18120 (12.46%)
+    Partido C: 19843 (13.65%)
+    Partido D: 13980 (9.61%)
+    Partido E: 26447 (18.19%)
+  Votos por sexo del votante:
+    Hombres: 63601 (49.84%)
+    Mujeres: 64002 (50.16%)
+
+Ciudad/Departamento: Pereira
+  Censo: 500000
+  Votos emitidos: 114700 (22.94%)
+  Votos por partido:
+    Partido A: 1444 (1.30%)
+    Partido B: 16607 (14.93%)
+    Partido C: 48103 (43.24%)
+    Partido D: 33288 (29.92%)
+    Partido E: 6019 (5.41%)
+  Votos por sexo del votante:
+    Hombres: 52898 (50.16%)
+    Mujeres: 52563 (49.84%)
+
+Ciudad/Departamento: Manizales
+  Censo: 430000
+  Votos emitidos: 146045 (33.96%)
+  Votos por partido:
+    Partido A: 5391 (4.00%)
+    Partido B: 17530 (13.00%)
+    Partido C: 28152 (20.87%)
+    Partido D: 34441 (25.53%)
+    Partido E: 40990 (30.39%)
+  Votos por sexo del votante:
+    Hombres: 63497 (50.19%)
+    Mujeres: 63007 (49.81%)
+
+Ciudad/Departamento: Armenia
+  Censo: 320000
+  Votos emitidos: 71253 (22.27%)
+  Votos por partido:
+    Partido A: 23907 (36.43%)
+    Partido B: 2819 (4.30%)
+    Partido C: 7055 (10.75%)
+    Partido D: 24853 (37.87%)
+    Partido E: 5171 (7.88%)
+  Votos por sexo del votante:
+    Hombres: 31881 (49.97%)
+    Mujeres: 31924 (50.03%)
+
+Ciudad/Departamento: Ibague
+  Censo: 540000
+  Votos emitidos: 208010 (38.52%)
+  Votos por partido:
+    Partido A: 39262 (19.10%)
+    Partido B: 44709 (21.75%)
+    Partido C: 53160 (25.86%)
+    Partido D: 25800 (12.55%)
+    Partido E: 29466 (14.34%)
+  Votos por sexo del votante:
+    Hombres: 96147 (49.97%)
+    Mujeres: 96250 (50.03%)
+
+Ciudad/Departamento: Neiva
+  Censo: 380000
+  Votos emitidos: 76040 (20.01%)
+  Votos por partido:
+    Partido A: 465 (0.67%)
+    Partido B: 25915 (37.50%)
+    Partido C: 34985 (50.62%)
+    Partido D: 635 (0.92%)
+    Partido E: 1256 (1.82%)
+  Votos por sexo del votante:
+    Hombres: 31535 (49.85%)
+    Mujeres: 31721 (50.15%)
+
+Ciudad/Departamento: Tunja
+  Censo: 190000
+  Votos emitidos: 57761 (30.40%)
+  Votos por partido:
+    Partido A: 8830 (15.51%)
+    Partido B: 6151 (10.80%)
+    Partido C: 14721 (25.86%)
+    Partido D: 8982 (15.78%)
+    Partido E: 17800 (31.27%)
+  Votos por sexo del votante:
+    Hombres: 28311 (50.12%)
+    Mujeres: 28173 (49.88%)
+
+Ciudad/Departamento: Villavicencio
+  Censo: 550000
+  Votos emitidos: 107791 (19.60%)
+  Votos por partido:
+    Partido A: 1095 (1.06%)
+    Partido B: 7000 (6.78%)
+    Partido C: 28820 (27.92%)
+    Partido D: 28185 (27.30%)
+    Partido E: 28817 (27.92%)
+  Votos por sexo del votante:
+    Hombres: 46762 (49.79%)
+    Mujeres: 47155 (50.21%)
+
+Ciudad/Departamento: Yopal
+  Censo: 180000
+  Votos emitidos: 57956 (32.20%)
+  Votos por partido:
+    Partido A: 8035 (15.16%)
+    Partido B: 7334 (13.84%)
+    Partido C: 15419 (29.09%)
+    Partido D: 12739 (24.04%)
+    Partido E: 8992 (16.97%)
+  Votos por sexo del votante:
+    Hombres: 26241 (49.96%)
+    Mujeres: 26278 (50.04%)
+
+Ciudad/Departamento: Florencia
+  Censo: 170000
+  Votos emitidos: 71486 (42.05%)
+  Votos por partido:
+    Partido A: 16646 (24.42%)
+    Partido B: 6768 (9.93%)
+    Partido C: 16237 (23.82%)
+    Partido D: 16962 (24.88%)
+    Partido E: 10346 (15.18%)
+  Votos por sexo del votante:
+    Hombres: 33290 (49.72%)
+    Mujeres: 33669 (50.28%)
+
+Ciudad/Departamento: Leticia
+  Censo: 50000
+  Votos emitidos: 13399 (26.80%)
+  Votos por partido:
+    Partido A: 4770 (35.93%)
+    Partido B: 690 (5.20%)
+    Partido C: 4079 (30.72%)
+    Partido D: 698 (5.26%)
+    Partido E: 1366 (10.29%)
+  Votos por sexo del votante:
+    Hombres: 5795 (49.94%)
+    Mujeres: 5808 (50.06%)
+
+Ciudad/Departamento: San Andres
+  Censo: 70000
+  Votos emitidos: 19399 (27.71%)
+  Votos por partido:
+    Partido A: 3892 (22.21%)
+    Partido B: 1667 (9.51%)
+    Partido C: 5357 (30.57%)
+    Partido D: 553 (3.16%)
+    Partido E: 5248 (29.95%)
+  Votos por sexo del votante:
+    Hombres: 8254 (49.37%)
+    Mujeres: 8463 (50.63%)
+
+Ciudad/Departamento: Santa Marta
+  Censo: 520000
+  Votos emitidos: 161214 (31.00%)
+  Votos por partido:
+    Partido A: 8163 (5.55%)
+    Partido B: 39422 (26.82%)
+    Partido C: 31682 (21.55%)
+    Partido D: 43447 (29.55%)
+    Partido E: 15945 (10.85%)
+  Votos por sexo del votante:
+    Hombres: 69284 (49.97%)
+    Mujeres: 69375 (50.03%)
+
+Ciudad/Departamento: Riohacha
+  Censo: 250000
+  Votos emitidos: 56221 (22.49%)
+  Votos por partido:
+    Partido A: 5608 (11.01%)
+    Partido B: 5708 (11.21%)
+    Partido C: 15369 (30.19%)
+    Partido D: 5857 (11.50%)
+    Partido E: 15196 (29.85%)
+  Votos por sexo del votante:
+    Hombres: 23799 (49.85%)
+    Mujeres: 23939 (50.15%)
+

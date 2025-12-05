@@ -1,0 +1,11 @@
+ESTADISTICAS PRESIDENCIA PAIS
+==============================
+
+Censo electoral: 20300000
+Total votos emitidos: 6008968 (29.60%)
+Votos en blanco: 169761 (0.84%)
+Votos nulos: 386117 (1.90%)
+Abstencion: 14291032 (70.40%)
+
+Ganador: Fernanda Quintero
+Requiere segunda vuelta: SI

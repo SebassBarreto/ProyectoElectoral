@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <unordered_map>
 #include "../../include/arboles/ArbolAVL.h"
 #include "../../include/listas/Lista.h"
 #include "../gestores/GestorArchivos.h"
@@ -32,12 +33,17 @@ class IndiceAVL {
 private:
     ArbolAVL<IndiceEntry> arbol;
     Lista<IndiceEntry> registros; // auxiliar para recuperar referencia y persistir
+    unordered_map<string, int> cacheRapido; // O(1) lookup optimization
 public:
     IndiceAVL() {}
     ~IndiceAVL() { limpiar(); }
 
     bool insertar(const string& clave, int referencia) {
         IndiceEntry e(clave, referencia);
+        
+        // Update cache
+        cacheRapido[clave] = referencia;
+        
         if (registros.existe(e)) {
             // actualizar referencia en la lista (opcional)
             // buscar y actualizar
@@ -58,38 +64,35 @@ public:
     }
 
     bool buscar(const string& clave, int& referenciaOut) const {
-        IndiceEntry key(clave, 0);
-        if (!arbol.buscar(key)) return false;
-        // Como ArbolAVL no expone el dato, buscamos en la lista auxiliar
-        // busqueda lineal; si quieres rendimiento aqui, usa un mapa adicional
-        int tam = registros.obtenerTamano(); // FIX: eliminar const_cast y usar interfaz const de Lista
-        IndiceEntry tmp;
-        for (int i = 0; i < tam; ++i) {
-            if (!registros.obtenerElemento(i, tmp)) continue; // FIX
-            if (tmp.clave == clave) {
-                referenciaOut = tmp.referencia;
-                return true;
-            }
+        // O(1) lookup using unordered_map cache (always in sync with AVL)
+        auto it = cacheRapido.find(clave);
+        if (it != cacheRapido.end()) {
+            referenciaOut = it->second;
+            return true;
         }
-        return false;
+        return false; // Not found in cache means not in index
     }
 
     bool eliminar(const string& clave) {
         IndiceEntry key(clave, 0);
         bool ok = arbol.eliminar(key); //capturar estado de eliminacion en arbol
+        
+        // Remove from cache
+        cacheRapido.erase(clave);
+        
         // eliminar de registros
-        bool foundList = false; // FIX
+        bool foundList = false;
         IndiceEntry tmp;
         int tam = registros.obtenerTamano();
         for (int i = 0; i < tam; ++i) {
             if (!registros.obtenerElemento(i, tmp)) continue;
             if (tmp.clave == clave) {
                 registros.eliminarEnPosicion(i);
-                foundList = true; // FIX
-                break; // FIX
+                foundList = true;
+                break;
             }
         }
-        return ok && foundList; // FIX: reflejar estado real
+        return ok && foundList;
     }
 
     bool guardarEnArchivo(const string& ruta) {
@@ -110,6 +113,7 @@ public:
     bool cargarDesdeArchivo(const string& ruta) {
         registros.limpiar();
         arbol.limpiar();
+        cacheRapido.clear();
         const int CAP = 8192;
         string lines[CAP];
         int n = 0;
@@ -119,6 +123,7 @@ public:
             if (!IndiceEntry::fromFileLine(lines[i], e)) continue;
             arbol.insertar(e);
             registros.insertarFinal(e);
+            cacheRapido[e.clave] = e.referencia; // Populate cache
         }
         return true;
     }
@@ -126,6 +131,7 @@ public:
     void limpiar() {
         registros.limpiar();
         arbol.limpiar();
+        cacheRapido.clear();
     }
 };
 

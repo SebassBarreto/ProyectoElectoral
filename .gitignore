@@ -1,0 +1,21 @@
+# Compiled binary
+proyecto
+*.exe
+*.out
+
+# Object files
+*.o
+*.obj
+
+# IDE/Editor specific
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# CodeQL artifacts
+_codeql_detected_source_root

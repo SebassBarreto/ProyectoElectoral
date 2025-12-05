@@ -33,7 +33,16 @@ public:
                 poblacion = stoi(s.substr(p3 + 1));
             } catch (...) { continue; }
 
-            lista.insertarFinal(Ciudad(id, nombre, idRegion, poblacion));
+            // Check for optional 5th field (esCapital)
+            bool esCapital = true; // Default: all cities in dataset are capitals
+            int p4 = (p3 == -1 ? -1 : (int)s.find('|', p3 + 1));
+            if (p4 != -1) {
+                string capStr = s.substr(p4 + 1);
+                esCapital = (capStr == "1" || capStr == "true" || capStr == "S");
+            }
+
+            Ciudad c(id, nombre, idRegion, poblacion, esCapital);
+            lista.insertarFinal(c);
         }
         return true;
     }

@@ -1,0 +1,20 @@
+ESTADISTICAS ALCALDIA TOTALES NACIONALES
+=========================================
+
+RESUMEN NACIONAL
+  Censo electoral total: 20300000
+  Total votos emitidos: 8175085 (40.27%)
+  Votos en blanco: 386854 (1.91%)
+  Votos nulos: 268488 (1.32%)
+  Abstencion: 12124915 (59.73%)
+
+ALCALDES ELECTOS POR PARTIDO
+  Total alcaldes: 20
+  Partido A: 3 (15.00%)
+  Partido B: 3 (15.00%)
+  Partido C: 6 (30.00%)
+  Partido D: 8 (40.00%)
+
+DISTRIBUCION POR SEXO
+  Hombres: 9 (45.00%)
+  Mujeres: 11 (55.00%)

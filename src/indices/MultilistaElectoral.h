@@ -11,7 +11,7 @@ using namespace std;
 
 class MultilistaElectoral {
 private:
-    Multilista<int,int,int> m; // regionId -> ciudadId -> candidatoId
+    Multilista<int,int,int> m; 
 
 public:
     MultilistaElectoral() {}
@@ -54,15 +54,16 @@ public:
     }
 
     // persistencia
-    bool guardarEnArchivo(const std::string& ruta) {
-        if (m.estaVacia()) return GestorArchivos::escribirArchivoCompleto(ruta, std::string(""));
+    bool guardarEnArchivo(const string& ruta) {
+        if (m.estaVacia()) return GestorArchivos::escribirArchivoCompleto(ruta, string(""));
         return false;
     }
 
-    bool cargarDesdeArchivo(const std::string& ruta) {
+    bool cargarDesdeArchivo(const string& ruta) {
         return false;
     }
 };
 
 #endif // MULTILISTAELECTORAL_H
+
 

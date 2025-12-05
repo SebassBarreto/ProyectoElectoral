@@ -1,19 +1,13 @@
 #ifndef MULTILISTAELECTORAL_H
 #define MULTILISTAELECTORAL_H
 
+#include <iostream>
 #include "../../include/listas/Multilista.h"
 #include "../../include/listas/Lista.h"
 #include "../gestores/GestorArchivos.h"
 #include "../modelos/Ciudad.h"
 #include <string>
-
-/*
-  Diseño sugerido de multilista electoral:
-  - Nivel1: regionId (int)      -> T = int
-  - Nivel2: ciudadId (int)      -> U = int
-  - Nivel3: candidatoId (int)   -> V = int
-  Con esto puedes hacer: region -> ciudades -> candidatos
-*/
+using namespace std;
 
 class MultilistaElectoral {
 private:
@@ -59,19 +53,16 @@ public:
         m.limpiar();
     }
 
-    // persistencia simple: guardar por linea region|ciudad1,ciudad2|candidato1,candidato2
+    // persistencia
     bool guardarEnArchivo(const std::string& ruta) {
         if (m.estaVacia()) return GestorArchivos::escribirArchivoCompleto(ruta, std::string(""));
-        // implementación concreta depende de poder iterar la multilista
-        // aquí puedes recorrer m.imprimir() o agregar una función para iterar
-        // por simplicidad se deja como punto de extensión
         return false;
     }
 
     bool cargarDesdeArchivo(const std::string& ruta) {
-        // parsear lineas y poblar multilista
         return false;
     }
 };
 
 #endif // MULTILISTAELECTORAL_H
+

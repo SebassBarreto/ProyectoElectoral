@@ -18,6 +18,29 @@ struct ResultadoCiudad;
 
 // simulador simple reproducible si se pasa una semilla
 class Simulador {
+private:
+    // Helper functions
+    static int censoTotal(SistemaElectoral& sys) {
+        int total = 0;
+        int n = sys.getCiudades().obtenerTamano();
+        for (int i = 0; i < n; ++i) {
+            Ciudad c;
+            if (!sys.getCiudades().obtenerElemento(i, c)) continue;
+            total += c.getPoblacion();
+        }
+        return total;
+    }
+
+    static bool obtenerCiudadPorId(SistemaElectoral& sys, int idCiudad, Ciudad& out) {
+        int n = sys.getCiudades().obtenerTamano();
+        for (int i = 0; i < n; ++i) {
+            Ciudad c;
+            if (!sys.getCiudades().obtenerElemento(i, c)) continue;
+            if (c.getId() == idCiudad) { out = c; return true; }
+        }
+        return false;
+    }
+
 public:
     static void seed(unsigned int s) {
         srand(s);
@@ -223,27 +246,6 @@ public:
         res.calcularResultados();
         resultadoOut = res;
         return true;
-    }
-
-    static int censoTotal(SistemaElectoral& sys) {
-        int total = 0;
-        int n = sys.getCiudades().obtenerTamano();
-        for (int i = 0; i < n; ++i) {
-            Ciudad c;
-            if (!sys.getCiudades().obtenerElemento(i, c)) continue;
-            total += c.getPoblacion();
-        }
-        return total;
-    }
-
-    static bool obtenerCiudadPorId(SistemaElectoral& sys, int idCiudad, Ciudad& out) {
-        int n = sys.getCiudades().obtenerTamano();
-        for (int i = 0; i < n; ++i) {
-            Ciudad c;
-            if (!sys.getCiudades().obtenerElemento(i, c)) continue;
-            if (c.getId() == idCiudad) { out = c; return true; }
-        }
-        return false;
     }
 };
 

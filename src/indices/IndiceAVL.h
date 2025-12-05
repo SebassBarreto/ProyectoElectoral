@@ -64,27 +64,13 @@ public:
     }
 
     bool buscar(const string& clave, int& referenciaOut) const {
-        // O(1) lookup using unordered_map cache
+        // O(1) lookup using unordered_map cache (always in sync with AVL)
         auto it = cacheRapido.find(clave);
         if (it != cacheRapido.end()) {
             referenciaOut = it->second;
             return true;
         }
-        
-        // Fallback to AVL search (for safety)
-        IndiceEntry key(clave, 0);
-        if (!arbol.buscar(key)) return false;
-        // Como ArbolAVL no expone el dato, buscamos en la lista auxiliar
-        int tam = registros.obtenerTamano();
-        IndiceEntry tmp;
-        for (int i = 0; i < tam; ++i) {
-            if (!registros.obtenerElemento(i, tmp)) continue;
-            if (tmp.clave == clave) {
-                referenciaOut = tmp.referencia;
-                return true;
-            }
-        }
-        return false;
+        return false; // Not found in cache means not in index
     }
 
     bool eliminar(const string& clave) {

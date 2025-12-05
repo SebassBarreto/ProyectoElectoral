@@ -1,25 +1,28 @@
 #ifndef INDICEAVL_H
 #define INDICEAVL_H
 
+#include <iostream>
 #include <string>
 #include "../../include/arboles/ArbolAVL.h"
 #include "../../include/listas/Lista.h"
 #include "../gestores/GestorArchivos.h"
 
+using namespace std;
+
 struct IndiceEntry {
-    std::string clave; // ej: "Candidato:100101" o "Ciudad:3"
-    int referencia;    // por ejemplo posición en Lista<>, o id numérico
+    string clave; // ej: "Candidato:100101" o "Ciudad:3"
+    int referencia;    // por ejemplo posicion en Lista<>, o id numerico
     IndiceEntry() : clave(""), referencia(-1) {}
-    IndiceEntry(const std::string& k, int r) : clave(k), referencia(r) {}
+    IndiceEntry(const string& k, int r) : clave(k), referencia(r) {}
     bool operator<(const IndiceEntry& o) const { return clave < o.clave; }
     bool operator>(const IndiceEntry& o) const { return clave > o.clave; }
     bool operator==(const IndiceEntry& o) const { return clave == o.clave; }
-    std::string toFileLine() const { return clave + "|" + std::to_string(referencia); }
-    static bool fromFileLine(const std::string& line, IndiceEntry& out) {
+    string toFileLine() const { return clave + "|" + to_string(referencia); }
+    static bool fromFileLine(const string& line, IndiceEntry& out) {
         size_t p = line.find('|');
-        if (p == std::string::npos) return false;
+        if (p == string::npos) return false;
         out.clave = line.substr(0, p);
-        try { out.referencia = std::stoi(line.substr(p + 1)); }
+        try { out.referencia = stoi(line.substr(p + 1)); }
         catch (...) { return false; }
         return true;
     }
@@ -33,7 +36,7 @@ public:
     IndiceAVL() {}
     ~IndiceAVL() { limpiar(); }
 
-    bool insertar(const std::string& clave, int referencia) {
+    bool insertar(const string& clave, int referencia) {
         IndiceEntry e(clave, referencia);
         if (registros.existe(e)) {
             // actualizar referencia en la lista (opcional)
@@ -46,6 +49,7 @@ public:
                 registros.eliminarEnPosicion(pos);
                 registros.insertarEnPosicion(tmp, pos);
             }
+            arbol.insertar(e); //asegurar sincronia del arbol tambien en actualizacion
             return true;
         }
         arbol.insertar(e);
@@ -53,16 +57,15 @@ public:
         return true;
     }
 
-    bool buscar(const std::string& clave, int& referenciaOut) const {
+    bool buscar(const string& clave, int& referenciaOut) const {
         IndiceEntry key(clave, 0);
         if (!arbol.buscar(key)) return false;
         // Como ArbolAVL no expone el dato, buscamos en la lista auxiliar
-        // búsqueda lineal; si quieres rendimiento aquí, usa un mapa adicional
-        Lista<IndiceEntry>* mutableReg = const_cast<Lista<IndiceEntry>*>(&registros);
-        int tam = mutableReg->obtenerTamano();
+        // busqueda lineal; si quieres rendimiento aqui, usa un mapa adicional
+        int tam = registros.obtenerTamano(); // FIX: eliminar const_cast y usar interfaz const de Lista
         IndiceEntry tmp;
         for (int i = 0; i < tam; ++i) {
-            mutableReg->obtenerElemento(i, tmp);
+            if (!registros.obtenerElemento(i, tmp)) continue; // FIX
             if (tmp.clave == clave) {
                 referenciaOut = tmp.referencia;
                 return true;
@@ -71,28 +74,30 @@ public:
         return false;
     }
 
-    bool eliminar(const std::string& clave) {
+    bool eliminar(const string& clave) {
         IndiceEntry key(clave, 0);
-        if (!arbol.eliminar(key)) return false;
+        bool ok = arbol.eliminar(key); //capturar estado de eliminacion en arbol
         // eliminar de registros
+        bool foundList = false; // FIX
         IndiceEntry tmp;
         int tam = registros.obtenerTamano();
         for (int i = 0; i < tam; ++i) {
             if (!registros.obtenerElemento(i, tmp)) continue;
             if (tmp.clave == clave) {
                 registros.eliminarEnPosicion(i);
-                return true;
+                foundList = true; // FIX
+                break; // FIX
             }
         }
-        return true;
+        return ok && foundList; // FIX: reflejar estado real
     }
 
-    bool guardarEnArchivo(const std::string& ruta) {
+    bool guardarEnArchivo(const string& ruta) {
         int tam = registros.obtenerTamano();
         if (tam == 0) {
-            return GestorArchivos::escribirArchivoCompleto(ruta, std::string(""));
+            return GestorArchivos::escribirArchivoCompleto(ruta, string(""));
         }
-        std::string out[4096];
+        string out[4096];
         int k = 0;
         IndiceEntry tmp;
         for (int i = 0; i < tam; ++i) {
@@ -102,11 +107,11 @@ public:
         return GestorArchivos::escribirLineas(ruta, out, k);
     }
 
-    bool cargarDesdeArchivo(const std::string& ruta) {
+    bool cargarDesdeArchivo(const string& ruta) {
         registros.limpiar();
         arbol.limpiar();
         const int CAP = 8192;
-        std::string lines[CAP];
+        string lines[CAP];
         int n = 0;
         if (!GestorArchivos::leerLineas(ruta, lines, CAP, n)) return false;
         for (int i = 0; i < n; ++i) {
@@ -123,5 +128,6 @@ public:
         arbol.limpiar();
     }
 };
+
 
 #endif // INDICEAVL_H

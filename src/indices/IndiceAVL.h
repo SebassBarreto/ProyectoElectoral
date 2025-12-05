@@ -1,23 +1,25 @@
 #ifndef INDICEAVL_H
 #define INDICEAVL_H
 
+#include <iostream>
 #include <string>
 #include "../../include/arboles/ArbolAVL.h"
 #include "../../include/listas/Lista.h"
 #include "../gestores/GestorArchivos.h"
+using namespace std;
 
 struct IndiceEntry {
-    std::string clave; // ej: "Candidato:100101" o "Ciudad:3"
-    int referencia;    // por ejemplo posición en Lista<>, o id numérico
+    std::string clave;
+    int referencia;    
     IndiceEntry() : clave(""), referencia(-1) {}
-    IndiceEntry(const std::string& k, int r) : clave(k), referencia(r) {}
+    IndiceEntry(const string& k, int r) : clave(k), referencia(r) {}
     bool operator<(const IndiceEntry& o) const { return clave < o.clave; }
     bool operator>(const IndiceEntry& o) const { return clave > o.clave; }
     bool operator==(const IndiceEntry& o) const { return clave == o.clave; }
-    std::string toFileLine() const { return clave + "|" + std::to_string(referencia); }
+    std::string toFileLine() const { return clave + "|" + to_string(referencia); }
     static bool fromFileLine(const std::string& line, IndiceEntry& out) {
         size_t p = line.find('|');
-        if (p == std::string::npos) return false;
+        if (p == string::npos) return false;
         out.clave = line.substr(0, p);
         try { out.referencia = std::stoi(line.substr(p + 1)); }
         catch (...) { return false; }
@@ -28,16 +30,15 @@ struct IndiceEntry {
 class IndiceAVL {
 private:
     ArbolAVL<IndiceEntry> arbol;
-    Lista<IndiceEntry> registros; // auxiliar para recuperar referencia y persistir
+    Lista<IndiceEntry> registros; 
 public:
     IndiceAVL() {}
     ~IndiceAVL() { limpiar(); }
 
-    bool insertar(const std::string& clave, int referencia) {
+    bool insertar(const string& clave, int referencia) {
         IndiceEntry e(clave, referencia);
         if (registros.existe(e)) {
-            // actualizar referencia en la lista (opcional)
-            // buscar y actualizar
+            
             int pos = registros.buscar(e);
             if (pos != -1) {
                 IndiceEntry tmp;
@@ -53,11 +54,10 @@ public:
         return true;
     }
 
-    bool buscar(const std::string& clave, int& referenciaOut) const {
+    bool buscar(const string& clave, int& referenciaOut) const {
         IndiceEntry key(clave, 0);
         if (!arbol.buscar(key)) return false;
-        // Como ArbolAVL no expone el dato, buscamos en la lista auxiliar
-        // búsqueda lineal; si quieres rendimiento aquí, usa un mapa adicional
+      
         Lista<IndiceEntry>* mutableReg = const_cast<Lista<IndiceEntry>*>(&registros);
         int tam = mutableReg->obtenerTamano();
         IndiceEntry tmp;
@@ -71,10 +71,10 @@ public:
         return false;
     }
 
-    bool eliminar(const std::string& clave) {
+    bool eliminar(const string& clave) {
         IndiceEntry key(clave, 0);
         if (!arbol.eliminar(key)) return false;
-        // eliminar de registros
+      
         IndiceEntry tmp;
         int tam = registros.obtenerTamano();
         for (int i = 0; i < tam; ++i) {
@@ -87,12 +87,12 @@ public:
         return true;
     }
 
-    bool guardarEnArchivo(const std::string& ruta) {
+    bool guardarEnArchivo(const string& ruta) {
         int tam = registros.obtenerTamano();
         if (tam == 0) {
-            return GestorArchivos::escribirArchivoCompleto(ruta, std::string(""));
+            return GestorArchivos::escribirArchivoCompleto(ruta, string(""));
         }
-        std::string out[4096];
+        string out[4096];
         int k = 0;
         IndiceEntry tmp;
         for (int i = 0; i < tam; ++i) {
@@ -102,11 +102,11 @@ public:
         return GestorArchivos::escribirLineas(ruta, out, k);
     }
 
-    bool cargarDesdeArchivo(const std::string& ruta) {
+    bool cargarDesdeArchivo(const string& ruta) {
         registros.limpiar();
         arbol.limpiar();
         const int CAP = 8192;
-        std::string lines[CAP];
+        string lines[CAP];
         int n = 0;
         if (!GestorArchivos::leerLineas(ruta, lines, CAP, n)) return false;
         for (int i = 0; i < n; ++i) {
@@ -125,3 +125,4 @@ public:
 };
 
 #endif // INDICEAVL_H
+

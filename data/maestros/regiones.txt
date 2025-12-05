@@ -1,6 +1,0 @@
-1|Andina|Zona central montañosa
-2|Caribe|Zona norte costera
-3|Pacifico|Zona occidental costera
-4|Orinoquia|Llanos orientales
-5|Amazonia|Selva suroriental
-6|Insular|Archipiélagos y islas

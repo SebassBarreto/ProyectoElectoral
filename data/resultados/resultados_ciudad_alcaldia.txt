@@ -1,7 +1,0 @@
-CIUDAD: Bogota
-Censo: 7800000
-Emitidos: 3785361
-Abstencion: 4014639
-Votos nulos: 168876
-Votos en blanco: 281761
-Ganador: Jorge Mendez

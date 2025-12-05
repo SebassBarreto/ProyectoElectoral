@@ -1,5 +1,0 @@
-Ernesto|Suarez|900001|M|Soltero|15|03|1975|Bogota|Bogota|Partido A|P|Felipe Gomez
-Fernanda|Quintero|900002|F|UnionLibre|01|12|1978|Barranquilla|Bogota|Partido B|P|Laura Vera
-Gustavo|Mejia|900003|M|Casado|22|06|1970|Medellin|Medellin|Partido C|P|Sofia Rojas
-Helena|Martinez|900004|F|Divorciado|07|09|1976|Cali|Bogota|Partido D|P|Mauricio Pardo
-Iván|Castro|900005|M|Soltero|30|01|1980|Cartagena|Bogota|Partido E|P|Paula Cardenas
